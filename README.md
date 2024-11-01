@@ -68,7 +68,11 @@
 
 1.Al realizar este analisis para mejor compresión del desarrollo de la guia se plantea el siguiente diagrama de flujo donde se ecuentra una breve descripción de cada paso para obtener los resultados que se esperan .
 
-![DIAGRAMA DE FLUJO](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/parte1.png) ![DIAGRAMA DE FLUJO](https://github.com/SeebastianOchoa/IMAGENESLAB3/blob/4efcb0c3f74646ea466c312043812b58b5261d38/CIRCUITO.jpeg) ![DIAGRAMA DE FLUJO](https://github.com/SeebastianOchoa/IMAGENESLAB3/blob/4efcb0c3f74646ea466c312043812b58b5261d38/CIRCUITO.jpeg) ![DIAGRAMA DE FLUJO](https://github.com/SeebastianOchoa/IMAGENESLAB3/blob/4efcb0c3f74646ea466c312043812b58b5261d38/CIRCUITO.jpeg) ![DIAGRAMA DE FLUJO](https://github.com/SeebastianOchoa/IMAGENESLAB3/blob/4efcb0c3f74646ea466c312043812b58b5261d38/CIRCUITO.jpeg)
+![DIAGRAMA DE FLUJO](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/parte1.png) 
+![DIAGRAMA DE FLUJO](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/parte2.png)
+![DIAGRAMA DE FLUJO](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/parte3.png)
+![DIAGRAMA DE FLUJO](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/parte4.png) 
+![DIAGRAMA DE FLUJO](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/parte5.png)
 
 2.Se investiga en la literatura la manera correcta de la ubicación de los electrodos para poder capturar la señal ECG para ello se diseña el circuito utilizando el sensor AD8232,arduino,cables de electrodos ,electrodos,jumpers como se muestra a continuacion ![CIRCUITO](https://github.com/SeebastianOchoa/IMAGENESLAB3/blob/4efcb0c3f74646ea466c312043812b58b5261d38/CIRCUITO.jpeg)
 
@@ -76,15 +80,15 @@
 
 4.Se sube este text a spyder para poder empezar con el analisis correspondiente, lo primero que se realiza es graficar la señal y se busca la frecuencia de muestreo adecuada utilizando el teorema de muestreo de Nyquist donde se establece que la frecuencia de muestreo debe ser al menos el doble de la frecuencia maxima de la señal,La frecuencia de muestreo ideal para una señal ECG suele ser entre 250 y 500 Hz, aunque puede variar dependiendo de la precisión que se requiera para el análisis de las características de la señal. Para aplicaciones médicas avanzadas o investigación, es común usar frecuencias más altas, incluso de 1000 Hz, para capturar con detalle los cambios rápidos en la señal siendo asi con el teorema mencionado anteriormente podemos decir que la frecuencia de muestreo escogida seraa de 1000 Hz. Se observa a continuación la gráfica de la señal ECG original con todas sus características, incluyendo frecuencia de muestreo, tiempo de muestreo, niveles de cuantificación, y estadísticos principales.
 
-![SEÑAL ORIGINAL](https://github.com/SeebastianOchoa/IMAGENESLAB3/blob/4efcb0c3f74646ea466c312043812b58b5261d38/CIRCUITO.jpeg)
+![SEÑAL ORIGINAL](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/Se%C3%B1al%20original.png)
 
 > > A partir de la gráfica de la señal ECG obtenida durante una toma de datos de 5 minutos, se observan varios aspectos importantes. La señal muestra oscilaciones en amplitud alrededor de un nivel medio, con picos pronunciados que probablemente corresponden a los complejos QRS de cada latido, aunque también se aprecia bastante ruido o variabilidad, posiblemente causado por movimientos, artefactos, o ruido del ambiente. Las oscilaciones regulares reflejan la actividad del corazón, y su frecuencia podría analizarse para calcular la frecuencia cardíaca en cada instante y estudiar su variabilidad. Además, algunos puntos presentan valores atípicos o picos negativos que podrían deberse a ruido en la adquisición o movimientos del paciente durante la toma.En cuanto a la calidad general de la señal, visualmente parece estar afectada por ruido
 
-![DATOS ESTADISTICOS](https://github.com/SeebastianOchoa/IMAGENESLAB3/blob/4efcb0c3f74646ea466c312043812b58b5261d38/CIRCUITO.jpeg)
+![DATOS ESTADISTICOS](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/datos%20estadisticos.png)
 
 > > **Número de muestras:** 30,000 muestras en total, lo cual tiene sentido ya que se tiene una duración de 300 segundos y una frecuencia de muestreo de 1000 Hz (300 \* 1000 = 30,000). Esto indica que se tienen suficientes datos para realizar el análisis.
 > >
-> > **Frecuencia de muestreo (fs):** se escogio de 1000 Hz ya que es una frecuencia de muestreo adecuada para la mayoría de los análisis de ECG, ya que permite capturar con precisión los detalles de la señal.
+> > **Frecuencia de muestreo (fs):** se escogió de 1000 Hz ya que es una frecuencia de muestreo adecuada para la mayoría de los análisis de ECG, ya que permite capturar con precisión los detalles de la señal.
 > >
 > > **Tiempo de muestreo (ts):** Calculado como 0.001 segundos, que es consistente con 1 / fs y corresponde a un intervalo de muestreo muy fino, lo cual es adecuado para señales de ECG.
 > >
@@ -96,7 +100,7 @@
 > >
 > > -   Valor mínimo: -101.88 y valor máximo: 106.61. Estos valores sugieren que la señal tiene una buena amplitud y parece contener tanto picos positivos como negativos, lo cual es característico de un ECG (picos P y complejos QRS)
 
-Se muestra el codigo que se implemento para el paso 4
+Se muestra el código que se implemento para el paso 4
 
 ```         
 # Importamos las librerías necesarias
@@ -149,19 +153,19 @@ plt.legend()
 
 5.En este análisis de señales ECG, se implementaron tres filtros: un filtro pasa alto, un filtro pasa bajo y un filtro pasa banda, con el objetivo de limpiar la señal de ruido y artefactos no deseados que podrían afectar la interpretación de los componentes esenciales de la señal. Las frecuencias de corte de 0.5 Hz y 50 Hz se seleccionaron cuidadosamente para abordar distintas fuentes de ruido y preservar solo las frecuencias relevantes del ECG.
 
--   **FILTRO PASA ALTO** ![SEÑAL FILTRO PASA ALTO](https://github.com/SeebastianOchoa/IMAGENESLAB3/blob/4efcb0c3f74646ea466c312043812b58b5261d38/CIRCUITO.jpeg)
+-   **FILTRO PASA ALTO** ![SEÑAL FILTRO PASA ALTO](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/pasa%20alto%20.png)
 
 > La gráfica muestra una señal ECG filtrada con un filtro pasa alto de 0.5 Hz, cuyo propósito es eliminar las componentes de baja frecuencia, como el ruido de movimiento y las fluctuaciones de la línea base, que pueden interferir en el análisis de la señal. Con este filtrado, se observa una reducción en las variaciones lentas de la señal, lo que permite resaltar mejor las características cardíacas importantes, como los picos R. La señal filtrada oscila entre aproximadamente -100 mV y 100 mV, y aunque el filtro atenúa ciertas frecuencias bajas, aún se percibe bastante ruido en frecuencias más altas, que no son afectadas por este tipo de filtro. Además, se observan algunas variaciones bruscas, como picos pronunciados alrededor de las posiciones 15000 y 28000, que podrían ser artefactos o eventos específicos de la señal
 
--   **FILTRO PASA BAJO** ![SEÑAL FILTRO PASA BAJO](https://github.com/SeebastianOchoa/IMAGENESLAB3/blob/4efcb0c3f74646ea466c312043812b58b5261d38/CIRCUITO.jpeg)
+-   **FILTRO PASA BAJO** ![SEÑAL FILTRO PASA BAJO](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/pasa%20bajo.png)
 
-> la gráfica representa una señal de ECG filtrada utilizando un filtro pasa bajo con una frecuencia de corte de 50 Hz. El objetivo de aplicar este filtro es eliminar el ruido de alta frecuencia, como el generado por la red eléctrica, y mantener las frecuencias que contienen información relevante del ECG, generalmente situadas por debajo de los 50 Hz.La señal presenta un patrón relativamente constante con fluctuaciones en la amplitud, características de los ciclos cardíacos, donde las variaciones corresponden a los latidos. Sin embargo, en algunos puntos se destacan picos más altos que el resto, lo cual puede indicar la presencia de artefactos o interferencias externas. Estos picos aislados podrían estar relacionados con movimientos involuntarios o ruido residual
+> la gráfica representa una señal de ECG filtrada utilizando un filtro pasa bajo con una frecuencia de corte de 50 Hz. El objetivo de aplicar este filtro es eliminar el ruido de alta frecuencia, como el generado por la red eléctrica, y mantener las frecuencias que contienen información relevante del ECG, generalmente situadas por debajo de los 50 Hz. La señal presenta un patrón relativamente constante con fluctuaciones en la amplitud, características de los ciclos cardíacos, donde las variaciones corresponden a los latidos. Sin embargo, en algunos puntos se destacan picos más altos que el resto, lo cual puede indicar la presencia de artefactos o interferencias externas. Estos picos aislados podrían estar relacionados con movimientos involuntarios o ruido residual
 
--   **FILTRO PASABANDA** ![SEÑAL FILTRO PASA BAJO](https://github.com/SeebastianOchoa/IMAGENESLAB3/blob/4efcb0c3f74646ea466c312043812b58b5261d38/CIRCUITO.jpeg)
+-   **FILTRO PASABANDA** ![SEÑAL FILTRO PASA BAJO](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/pasa%20banda.png)
 
 > la gráfica muestra la señal de ECG procesada con un filtro pasa banda entre 0.5 y 50 Hz, diseñado para eliminar tanto las frecuencias bajas asociadas a movimientos lentos o ruido de base, como las frecuencias altas, como el ruido de la red eléctrica. Como resultado, la señal se centra en el rango de frecuencias clave del ECG, lo que permite observar mejor las variaciones correspondientes a los latidos cardíacos. A lo largo de la gráfica, se distinguen los picos regulares de la señal cardíaca, que muestran un ritmo constante en su mayoría, lo cual es característico de los ciclos cardíacos en el ECG. Estos picos regulares, que probablemente corresponden a las ondas R, representan la actividad eléctrica del corazón en cada latido. La amplitud de la señal, que varía entre aproximadamente -75 mV y 75 mV, sugiere una señal más detallada y libre de ruido
 
-Se muestra el codigo que se implemento para el paso 5
+Se muestra el codigo que se implemento para los filtros
 
 ```         
 ##################### FILTROS ##########################
@@ -226,7 +230,7 @@ ecg_filtered_bandpass = np.ravel(ecg_filtered_bandpass)
 
 6.La identificación de los picos R en una señal de ECG es un paso fundamental para analizar la actividad cardíaca, ya que estos representan el punto de máxima amplitud en cada ciclo del corazón y corresponden a la despolarización de los ventrículos. Al localizar los picos R en una señal de ECG filtrada, es posible calcular los intervalos R-R, que son los periodos de tiempo entre latidos consecutivos. Estos intervalos son claves para evaluar la frecuencia cardíaca y analizar la variabilidad del ritmo, factores importantes para diagnosticar y monitorear diversas condiciones cardíacas. En este laboratorio, se propone identificar automáticamente los picos R y calcular los intervalos R-R mediante la función find_peaks para obtener una representación precisa de la dinámica del ritmo cardíaco.
 
-![GRAFICA PICOS R](https://github.com/SeebastianOchoa/IMAGENESLAB3/blob/4efcb0c3f74646ea466c312043812b58b5261d38/CIRCUITO.jpeg)
+![GRAFICA PICOS R](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/se%C3%B1al%20picos.png)
 
 La gráfica presenta una señal ECG filtrada en azul y los picos R identificados como puntos rojos. Estos picos R son los puntos de máxima amplitud de cada ciclo cardíaco y representan la despolarización ventricular. La identificación de estos picos es clave para medir los intervalos RR, que son los tiempos entre latidos consecutivos y permiten calcular la frecuencia.
 
@@ -236,7 +240,7 @@ Además, algunos picos R en la gráfica presentan amplitudes mayores o menores, 
 
 Se calcularon los intervalos R-R mediante la funcion find_peaks
 
-![CALCULO DE LOS INTERVALOS R-R](https://github.com/SeebastianOchoa/IMAGENESLAB3/blob/4efcb0c3f74646ea466c312043812b58b5261d38/CIRCUITO.jpeg)
+![CALCULO DE LOS INTERVALOS R-R](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/intervalor-r.png)
 
 Los intervalos R-R representan el tiempo entre dos picos R consecutivos en un ECG, medido en milisegundos (ms). Este tiempo es esencial para calcular la frecuencia cardíaca, ya que el intervalo inversamente corresponde al ritmo del corazón en latidos por minuto (bpm). Valores de intervalo R-R en reposo típicamente oscilan entre 600 y 1200 ms, lo que corresponde a una frecuencia cardíaca de 50 a 100 bpm.
 
@@ -274,7 +278,7 @@ print("Intervalos R-R (en ms):", intervalos_RR)
 
     Se ha escogido un ventaneamiento rectangular para dividir la señal, ya que es el método más simple y directo, permitiendo analizar cada sección de la señal tal como fue capturada. Al no aplicar ninguna ponderación, este tipo de ventana mantiene la forma y amplitud original de las ondas características del ECG, sin introducir efectos de suavizado o distorsión que podrían alterar la percepción de las contracciones y relajaciones cardíacas. Esto hace que el ventaneamiento rectangular sea ideal para estudiar patrones específicos en la señal.
 
-![GRAFICA CON VENTANEAMIENTO RECTANGULAR](https://github.com/SeebastianOchoa/IMAGENESLAB3/blob/4efcb0c3f74646ea466c312043812b58b5261d38/CIRCUITO.jpeg)
+![GRAFICA CON VENTANEAMIENTO RECTANGULAR](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/PICOS%20R.png)
 
 En este análisis, se calculan los parámetros básicos de la variabilidad de la frecuencia cardíaca (HRV) y se examinan críticamente utilizando técnicas estadísticas adecuadas para interpretar las fluctuaciones en el ritmo cardíaco. La HRV es un indicador importante de la actividad del sistema nervioso autónomo y ofrece información sobre el equilibrio entre el sistema simpático y el parasimpático. Para mejorar la claridad y precisión en la visualización de la señal ECG, se aplica un ventaneo rectangular en seis ventanas de duración específica, lo cual permite segmentar la señal y observar las características de la HRV en intervalos discretos. Este enfoque facilita la detección de patrones y la reducción de ruido, permitiendo un análisis más detallado de la señal en cada segmento. Al aplicar técnicas estadísticas a cada ventana, se puede evaluar la variabilidad de la HRV en distintos intervalos, proporcionando una perspectiva más completa sobre la estabilidad del ritmo cardíaco y su comportamiento en el tiempo.
 
@@ -282,9 +286,9 @@ En este análisis, se calculan los parámetros básicos de la variabilidad de la
 > >
 > > La gráfica de la ventana 1 muestra una porción de la señal ECG con los picos R marcados en rojo, indicando los puntos donde se detectaron latidos cardíacos. Visualmente, los picos R parecen estar distribuidos de manera regular, lo que es un buen indicador de estabilidad en el ritmo cardíaco durante esta ventana específica. La amplitud de la señal oscila entre aproximadamente -20 mV y 40 mV, con picos claros que ayudan en la detección de los intervalos R-R.
 
-![VENTANA 1](https://github.com/SeebastianOchoa/IMAGENESLAB3/blob/4efcb0c3f74646ea466c312043812b58b5261d38/CIRCUITO.jpeg)
+![VENTANA 1](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/ventana1.png)
 
-![PARAMETROS BASICOS VENTANA 1](https://github.com/SeebastianOchoa/IMAGENESLAB3/blob/4efcb0c3f74646ea466c312043812b58b5261d38/CIRCUITO.jpeg)
+![PARAMETROS BASICOS VENTANA 1]([https://github.com/SeebastianOchoa/IMAGENESLAB3/blob/4efcb0c3f74646ea466c312043812b58b5261d38/CIRCUITO.jpeg](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/parametros%20basicos1.png))
 
 > > 1.  ***Media RR:***  el valor del RR media es de 734,09 ms corresponde a una frecuencia cardiaca de aproximadamente 82 latidos por minuto, es valor es más típico en un estado de reposo o actividad ligera
 > >
@@ -300,9 +304,11 @@ En este análisis, se calculan los parámetros básicos de la variabilidad de la
 
 > > En la gráfica de la ventana 2 de la señal ECG, se observan los picos R marcados en rojo sobre la señal, que tiene una amplitud oscilando entre -10 mV y aproximadamente 25 mV. La regularidad de los picos R sugiere estabilidad en el ritmo cardíaco, aunque se pueden apreciar ciertas variaciones en las amplitudes y en la distancia entre los picos, lo que refleja la variabilidad de la frecuencia cardíaca
 
-![VENTANA 2](https://github.com/SeebastianOchoa/IMAGENESLAB3/blob/4efcb0c3f74646ea466c312043812b58b5261d38/CIRCUITO.jpeg)
+![VENTANA 2](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/ventana2.png
+)
 
-![PARAMETROS BASICOS VENTANA 2](https://github.com/SeebastianOchoa/IMAGENESLAB3/blob/4efcb0c3f74646ea466c312043812b58b5261d38/CIRCUITO.jpeg)
+![PARAMETROS BASICOS VENTANA 2](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/parametros%20basicos2.png
+)
 
 > > 1.  ***MEDIA RR :*** La Media RR representa el intervalo promedio entre picos R, y un valor de 624,74 ms corresponde a una frecuencia cardíaca aproximada de 96 rpm (latidos por minuto). Esto es un poco elevado para una persona en reposo, pero puede ser normal en situaciones de actividad ligera o bajo un nivel de estrés. Esta frecuencia cardíaca es común y no es indicativa de problemas, aunque está en el rango superior de reposo.
 > >
@@ -318,9 +324,10 @@ En este análisis, se calculan los parámetros básicos de la variabilidad de la
 
 > > En la gráfica de la ventana 3 de la señal ECG, se observa un trazado de la señal con picos R marcados en rojo, que permiten identificar las contracciones cardíacas. A diferencia de las ventanas anteriores, esta gráfica muestra algunas irregularidades, como picos más altos y profundos alrededor de las muestras 1000 y 4000, que podrían ser artefactos o interferencias en la señal. La amplitud de la señal varía entre aproximadamente -60 mV y 60 mV, lo cual es inusual y sugiere que podría haber algún ruido o alteración que no fue completamente eliminado en el filtrado
 
-![VENTANA 3](https://github.com/SeebastianOchoa/IMAGENESLAB3/blob/4efcb0c3f74646ea466c312043812b58b5261d38/CIRCUITO.jpeg)
+![VENTANA 3](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/ventana3.png)
 
-![PARAMETROS BASICOS VENTANA 3](https://github.com/SeebastianOchoa/IMAGENESLAB3/blob/4efcb0c3f74646ea466c312043812b58b5261d38/CIRCUITO.jpeg)
+![PARAMETROS BASICOS VENTANA 3](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/parametros%20basicos3.png
+)
 
 > > 1.  ***MEDIA RR:*** Un intervalo RR de 642,67 ms equivale a una frecuencia cardíaca de aproximadamente 93 rpm (latidos por minuto). Esta frecuencia cardíaca es algo elevada lo que sugiere que la persona tuvo alguna preocupación, pero en términos generales, es una frecuencia cardíaca aceptable.
 > >
@@ -336,9 +343,10 @@ En este análisis, se calculan los parámetros básicos de la variabilidad de la
 
 > > En la gráfica de la ventana 4 de la señal ECG, se observa la señal cardíaca con picos R marcados en rojo, indicando los momentos de contracción ventricular. La señal oscila entre aproximadamente -20 mV y 30 mV, lo cual parece estar dentro de un rango más estable en comparación con otras ventanas. Los picos R están claramente identificados, aunque se notan ciertas variaciones en la amplitud, posiblemente debido a la respiración u otros factores fisiológicos
 
-![VENTANA 4](https://github.com/SeebastianOchoa/IMAGENESLAB3/blob/4efcb0c3f74646ea466c312043812b58b5261d38/CIRCUITO.jpeg)
+![VENTANA 4](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/ventana4.png
+)
 
-![PARAMETROS BASICOS VENTANA 4](https://github.com/SeebastianOchoa/IMAGENESLAB3/blob/4efcb0c3f74646ea466c312043812b58b5261d38/CIRCUITO.jpeg)
+![PARAMETROS BASICOS VENTANA 4](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/parametros%20basicos4.png)
 
 > > 1.  ***MEDIA RR :*** La Media RR de 640 ms corresponde a una frecuencia cardíaca de aproximadamente 93,75 rpm. Este valor es muy similar a los de las ventanas anteriores (aproximadamente entre 90 y 96 rpm), lo cual sugiere una frecuencia cardíaca estable a lo largo del período analizado. Una frecuencia cardíaca en este rango podría estar ligeramente elevada para reposo, pero si es consistente en todas las ventanas, es indicativo de una actividad simpática moderada o un estado de alerta bajo.
 > >
@@ -354,9 +362,11 @@ En este análisis, se calculan los parámetros básicos de la variabilidad de la
 
 > > En la gráfica de la señal ECG en la ventana 5, se observa una serie de picos R marcados en rojo que sobresalen de una señal de fondo con oscilaciones de menor amplitud. La amplitud de estos picos alcanza aproximadamente los 30 mV, mientras que el resto de la señal varía entre -20 mV y 20 mV, lo cual es característico de una señal ECG adecuada y bien capturada. Los picos R están regularmente espaciados, lo que sugiere un ritmo cardíaco estable sin grandes fluctuaciones. Esta regularidad es clave para calcular intervalos R-R precisos, ya que indica que el proceso de filtrado ha sido efectivo para reducir ruido sin alterar la forma de la onda cardíaca
 
-![VENTANA 5](https://github.com/SeebastianOchoa/IMAGENESLAB3/blob/4efcb0c3f74646ea466c312043812b58b5261d38/CIRCUITO.jpeg)
+![VENTANA 5](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/ventana5.png
+)
 
-![PARAMETROS BASICOS VENTANA 5](https://github.com/SeebastianOchoa/IMAGENESLAB3/blob/4efcb0c3f74646ea466c312043812b58b5261d38/CIRCUITO.jpeg)
+![PARAMETROS BASICOS VENTANA 5](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/parametros%20basicos5.png
+)
 
 > > 1.  ***MEDIA RR:*** Con una Media RR de 668.89 ms, la frecuencia cardíaca es de aproximadamente 89.7 rpm , lo cual es ligeramente menor que en las ventanas anteriores pero sigue en el mismo rango de actividad ligera o alerta. SDNN: es un indicador de la variabilidad total de la frecuencia cardíaca, y un valor de 147,94 ms sigue reflejando una alta variabilidad. Este valor es similar a los SDNN de las ventanas anteriores, lo cual indica una estabilidad de la variabilidad cardíaca a largo plazo en esta señal.
 > >
@@ -372,9 +382,9 @@ En este análisis, se calculan los parámetros básicos de la variabilidad de la
 
 > > En la gráfica de la señal ECG en la ventana 6, observamos la representación de la señal cardíaca con los picos R identificados en rojo, que corresponden a cada latido del corazón. A primera vista, la señal parece estar bien capturada, con un rango de amplitud que se extiende desde aproximadamente -25 mV hasta 25 mV, con un pico atípico que alcanza los 75 mV alrededor de la muestra 3000. Este pico anómalo podría ser un artefacto o ruido inesperado en la señal,
 
-![VENTANA 6](https://github.com/SeebastianOchoa/IMAGENESLAB3/blob/4efcb0c3f74646ea466c312043812b58b5261d38/CIRCUITO.jpeg)
+![VENTANA 6](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/ventana6.png)
 
-![PARAMETROS BASICOS VENTANA 6](https://github.com/SeebastianOchoa/IMAGENESLAB3/blob/4efcb0c3f74646ea466c312043812b58b5261d38/CIRCUITO.jpeg)
+![PARAMETROS BASICOS VENTANA 6](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/parametros%20basicos6.png)
 
 > > 1.  ***MEDIA RR:*** La Media RR de 657,73 ms representa frecuencia cardiaca de aproximadamente 91 rpm (latidos por minuto). Este valor es coherente con las ventanas anteriores, mostrando una frecuencia cardíaca levemente elevada pero estable, lo que podría reflejar un estado de actividad ligera o alerta moderada.
 > >
@@ -474,7 +484,7 @@ for resultado in hrv_results:
 
 La wavelet Morlet es una función compleja de tipo sinusoidal modulada por una envolvente gaussiana. Esto permite un análisis en frecuencia muy preciso, ideal para la representación de señales en el dominio de tiempo-frecuencia, como en el espectrograma de HRV. La Morlet es particularmente adecuada para la transformada wavelet continua (CWT) debido a su alta resolución en frecuencia, lo cual facilita la identificación de componentes de frecuencia en la señal HRV, además la señal fisiológica proporcionada del AD8232, es una señal continua y por ende la wavelet Daubechies esta en el dominio discreto impidiendo procesar señales continuas.
 
-![ESPECTOGRAMA DE HVR USANDO TRANSFORMADA WAVELET5 CONTINUA(MORLET)](https://github.com/SeebastianOchoa/IMAGENESLAB3/blob/4efcb0c3f74646ea466c312043812b58b5261d38/CIRCUITO.jpeg)
+![ESPECTOGRAMA DE HVR USANDO TRANSFORMADA WAVELET5 CONTINUA(MORLET)](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/espectograma.png)
 
 Este espectrograma de HRV muestra la variación de la amplitud en diferentes frecuencias de la señal HRV a lo largo del tiempo, obtenida mediante la transformada wavelet continua (CWT) con la wavelet Morlet. La amplitud de la CWT está codificada en colores, donde los colores más cálidos (amarillo, naranja y rojo) representan amplitudes mayores, mientras que los colores fríos (azul) representan amplitudes menores.
 
@@ -487,7 +497,7 @@ Este espectrograma de HRV muestra la variación de la amplitud en diferentes fre
 
 > > #### ***POTENCIA EN BANDAS DE BAJA Y ALTA FRECUENCIA***
 
-![ESPECTOGRAMA DE HVR USANDO TRANSFORMADA WAVELET5 CONTINUA(MORLET)](https://github.com/SeebastianOchoa/IMAGENESLAB3/blob/4efcb0c3f74646ea466c312043812b58b5261d38/CIRCUITO.jpeg)
+![POTENCIA EN BANDAS DE BAJA Y AKTA FRECUENCIA )](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/potencia.png)
 
 -   ***Potencias en LF (frecuencia baja)***: Representan la actividad simpática, que puede estar más constante y reflejar el estado basal del individuo. -Potencias en HF (frecuencia alta) : Muestran los efectos de la regulación parasimpática, como la respiración o relajación, y parecen tener episodios de aumento en el espectrograma.
 
