@@ -1,12 +1,24 @@
+---
+title: "README"
+author: "Andrea Valiente,Juliana Hernandez"
+date: "2024-11-01"
+editor_options: 
+  markdown: 
+    wrap: 60
+---
+
+------------------------------------------------------------------------
+
+
 ## ***LABORATORIO 4: Variabilidad de la Frecuencia Cardiaca usando la Transformada Wavelet***
 
 ------------------------------------------------------------------------
 
 ```         
-                         Procesamiento digiatal de señales
-                               Carolina Corredor
-                                    BMED B  
-                                     UMNG 
+                                       Procesamiento digiatal de señales
+                                             Carolina Corredor
+                                                  BMED B  
+                                                   UMNG 
 ```
 
 ------------------------------------------------------------------------
@@ -288,7 +300,7 @@ En este análisis, se calculan los parámetros básicos de la variabilidad de la
 
 ![VENTANA 1](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/ventana1.png)
 
-![PARAMETROS BASICOS VENTANA 1]([https://github.com/SeebastianOchoa/IMAGENESLAB3/blob/4efcb0c3f74646ea466c312043812b58b5261d38/CIRCUITO.jpeg](https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/parametros%20basicos1.png))
+![PARAMETROS BASICOS VENTANA 1]((https://github.com/a2002valiente/lab4-Variabilidad-de-la-Frecuencia-Cardiaca-usando-la-Transformada-Wavelet/blob/main/imagenes/parametros%20basicos1.png))
 
 > > 1.  ***Media RR:***  el valor del RR media es de 734,09 ms corresponde a una frecuencia cardiaca de aproximadamente 82 latidos por minuto, es valor es más típico en un estado de reposo o actividad ligera
 > >
