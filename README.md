@@ -27,7 +27,7 @@ editor_options:
 
 ------------------------------------------------------------------------
 
-**Descripción:**Para el desarrollo del laboratorio, se realizará primero una investigación teórica que abarque los conceptos necesarios para garantizar un adecuado desempeño de la práctica. Esta investigación incluirá:
+**Descripción:** Para el desarrollo del laboratorio, se realizará primero una investigación teórica que abarque los conceptos necesarios para garantizar un adecuado desempeño de la práctica. Esta investigación incluirá:
 
 -   Actividad simpática y parasimpática del sistema nervioso autónomo.
 
